@@ -102,7 +102,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <form action="{{route('admin.activation', ['id'=>$social->id])}}" method="POST">
-                                            <input type="hidden" name="type" value="social">
+                                            <input type="hidden" name="type" value="socialSettings">
                                             @csrf
                                             {!! $social->getStatus() !!}
                                         </form>

@@ -51,6 +51,18 @@
                             <td>{{$settings->address_ru}}</td>
                         </tr>
                         <tr>
+                            <td>Ma'lumot Uz</td>
+                            <td>{{$settings->description_uz}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ma'lumot En</td>
+                            <td>{{$settings->description_en}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ma'lumot Ru</td>
+                            <td>{{$settings->description_ru}}</td>
+                        </tr>
+                        <tr>
                             <td>Telefon raqam</td>
                             <td>{{$settings->number}}</td>
                         </tr>

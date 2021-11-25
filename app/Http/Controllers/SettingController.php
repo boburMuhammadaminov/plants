@@ -78,6 +78,9 @@ class SettingController extends Controller
             'address_uz' => 'required|max:255',
             'address_en' => 'required|max:255',
             'address_ru' => 'required|max:255',
+            'description_uz' => 'required|max:255',
+            'description_en' => 'required|max:255',
+            'description_ru' => 'required|max:255',
             'number' => 'required|max:255',
             'email' => 'required|max:255',
         ]);

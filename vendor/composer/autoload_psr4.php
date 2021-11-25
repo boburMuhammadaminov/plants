@@ -93,5 +93,6 @@ return array(
     'Barryvdh\\elFinderFlysystemDriver\\' => array($vendorDir . '/barryvdh/elfinder-flysystem-driver/src'),
     'Barryvdh\\Elfinder\\' => array($vendorDir . '/barryvdh/laravel-elfinder/src'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src'),
+    'Artesaos\\SEOTools\\' => array($vendorDir . '/artesaos/seotools/src/SEOTools'),
     'App\\' => array($baseDir . '/app'),
 );

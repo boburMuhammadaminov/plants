@@ -61,6 +61,27 @@
                         <p class="text-danger">* {{$message}}</p>
                         @enderror
                         <div class="form-group">
+                            <label for="description_uz">Ma'lumot UZ</label>
+                            <input type="text" required class="form-control" name="description_uz" placeholder="Ma'lumot (uz)ni kiriting" value="{{ $setting->description_uz }}">
+                        </div>
+                        @error ('description_uz')
+                        <p class="text-danger">* {{$message}}</p>
+                        @enderror
+                        <div class="form-group">
+                            <label for="description_en">Ma'lumot EN</label>
+                            <input type="text" required class="form-control" name="description_en" placeholder="Ma'lumot (en)ni kiriting" value="{{ $setting->description_en }}">
+                        </div>
+                        @error ('description_en')
+                        <p class="text-danger">* {{$message}}</p>
+                        @enderror
+                        <div class="form-group">
+                            <label for="description_ru">Ma'lumot RU</label>
+                            <input type="text" required class="form-control" name="description_ru" placeholder="Ma'lumot (ru)ni kiriting" value="{{ $setting->description_ru }}">
+                        </div>
+                        @error ('description_ru')
+                        <p class="text-danger">* {{$message}}</p>
+                        @enderror
+                        <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" required class="form-control" name="email" placeholder="Emailni kiriting" value="{{ $setting->email }}">
                         </div>

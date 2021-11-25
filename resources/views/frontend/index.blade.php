@@ -28,12 +28,12 @@
                 </div>
               @endforeach
             </div>
-            <div class="symbols">
+            {{-- <div class="symbols">
               <a href="#">
                 <img src="{{asset('frontend/images/symbols.png')}}" />
                 <p>Davlat ramzlari</p>
               </a>
-            </div>
+            </div> --}}
             {{-- <div class="banner">
               <a href="#">
                 <img src="{{asset('frontend/images/364f0760508e6e167c0817455503531d.jpg')}}" />
@@ -57,7 +57,7 @@
 
 <section class="news-section">
     <div class="my-container">
-      <a href="#" class="d-block section-title mb-3">Axborot xizmati</a>
+      <a href="#" class="d-block section-title mb-3">{{__('word.news')}}</a>
       <div class="grid" id="isotopeGrid">
           @foreach ($blogs as $blog)
             <div class="mb-3 item element-item">

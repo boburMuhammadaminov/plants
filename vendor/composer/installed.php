@@ -5,11 +5,20 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bd992dfb43a052eee642bb59ea91a81411ac4ca1',
+        'reference' => 'ffe352e71f2a97768fe8d892abb25704a362309a',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'artesaos/seotools' => array(
+            'pretty_version' => 'v0.20.2',
+            'version' => '0.20.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../artesaos/seotools',
+            'aliases' => array(),
+            'reference' => '94fbb3b331dab7433b335a9aafd74a312a5525fe',
+            'dev_requirement' => false,
+        ),
         'asm89/stack-cors' => array(
             'pretty_version' => 'v2.0.3',
             'version' => '2.0.3.0',
@@ -427,7 +436,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bd992dfb43a052eee642bb59ea91a81411ac4ca1',
+            'reference' => 'ffe352e71f2a97768fe8d892abb25704a362309a',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

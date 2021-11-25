@@ -24,6 +24,9 @@ class CreateSettingsTable extends Migration
             $table->string('name_uz')->default('NULL');
             $table->string('name_en')->default('NULL');
             $table->string('name_ru')->default('NULL');
+            $table->string('description_uz')->default('NULL');
+            $table->string('description_en')->default('NULL');
+            $table->string('description_ru')->default('NULL');
             $table->timestamps();
         });
 

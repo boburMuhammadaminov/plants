@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
 
     <!-- bootstrap 5.0.0 css files -->
 
@@ -64,6 +67,7 @@
     define("lang", session('lang'));
     $setting = \App\Models\Setting::first();
     $logo = \App\Models\SiteImage::first();
+    $socials = \App\Models\SocialSettings::where('is_active', '=', 1)->get();
     $pagesCategories = \App\Models\PagesCategory::with(
       array(
         'pages' => function($query){ $query->where('is_active', '=', 1); }
@@ -142,14 +146,15 @@
               </ul>
             </div>
             <div class="col-md-6 col-sm-12 in-row secondary">
-              <ul class="social in-row">
-                <li>
-                  <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                </li>
-              </ul>
+              @if (count($socials) > 0)
+                <ul class="social in-row">
+                  @foreach ($socials as $social)
+                  <li>
+                    <a href="{{$social->link}}"><i class="{{$social->icon}}"></i></a>
+                  </li>
+                  @endforeach
+                </ul>
+              @endif
               <form class="search">
                 <input type="text" placeholder="{{__('word.search')}}" />
                 <button type="submit"><i class="fa fa-search"></i></button>

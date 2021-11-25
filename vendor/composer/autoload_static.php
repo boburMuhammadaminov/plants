@@ -182,6 +182,7 @@ class ComposerStaticInit5087ed092c32f0b28fa9b19e7768e0c8
         'A' => 
         array (
             'Asm89\\Stack\\' => 12,
+            'Artesaos\\SEOTools\\' => 18,
             'App\\' => 4,
         ),
     );
@@ -539,6 +540,10 @@ class ComposerStaticInit5087ed092c32f0b28fa9b19e7768e0c8
         array (
             0 => __DIR__ . '/..' . '/asm89/stack-cors/src',
         ),
+        'Artesaos\\SEOTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -568,6 +573,7 @@ class ComposerStaticInit5087ed092c32f0b28fa9b19e7768e0c8
         'App\\Http\\Controllers\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\GalleryController' => __DIR__ . '/../..' . '/app/Http/Controllers/GalleryController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ImageController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageController.php',
         'App\\Http\\Controllers\\LinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/LinkController.php',
@@ -605,6 +611,27 @@ class ComposerStaticInit5087ed092c32f0b28fa9b19e7768e0c8
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'Artesaos\\SEOTools\\Contracts\\JsonLd' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/JsonLd.php',
+        'Artesaos\\SEOTools\\Contracts\\JsonLdMulti' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/JsonLdMulti.php',
+        'Artesaos\\SEOTools\\Contracts\\MetaTags' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/MetaTags.php',
+        'Artesaos\\SEOTools\\Contracts\\OpenGraph' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/OpenGraph.php',
+        'Artesaos\\SEOTools\\Contracts\\SEOFriendly' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/SEOFriendly.php',
+        'Artesaos\\SEOTools\\Contracts\\SEOTools' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/SEOTools.php',
+        'Artesaos\\SEOTools\\Contracts\\TwitterCards' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/TwitterCards.php',
+        'Artesaos\\SEOTools\\Facades\\JsonLd' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Facades/JsonLd.php',
+        'Artesaos\\SEOTools\\Facades\\JsonLdMulti' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Facades/JsonLdMulti.php',
+        'Artesaos\\SEOTools\\Facades\\OpenGraph' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Facades/OpenGraph.php',
+        'Artesaos\\SEOTools\\Facades\\SEOMeta' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Facades/SEOMeta.php',
+        'Artesaos\\SEOTools\\Facades\\SEOTools' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Facades/SEOTools.php',
+        'Artesaos\\SEOTools\\Facades\\TwitterCard' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Facades/TwitterCard.php',
+        'Artesaos\\SEOTools\\JsonLd' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/JsonLd.php',
+        'Artesaos\\SEOTools\\JsonLdMulti' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/JsonLdMulti.php',
+        'Artesaos\\SEOTools\\OpenGraph' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/OpenGraph.php',
+        'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Providers/SEOToolsServiceProvider.php',
+        'Artesaos\\SEOTools\\SEOMeta' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/SEOMeta.php',
+        'Artesaos\\SEOTools\\SEOTools' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/SEOTools.php',
+        'Artesaos\\SEOTools\\Traits\\SEOTools' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Traits/SEOTools.php',
+        'Artesaos\\SEOTools\\TwitterCards' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/TwitterCards.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
