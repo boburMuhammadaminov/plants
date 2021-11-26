@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\Image;
 use App\Models\Link;
+use App\Models\PagesCategory;
+use App\Models\PagesSetting;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -71,6 +73,7 @@ class PagesController extends Controller
         $sliders = Slider::where('is_active', '=', 1)->get();
         $blogs = Blog::with('category')->where('is_active', '=', 1)->limit(4)->get();
         $links = \App\Models\Link::where('is_active', '=', 1)->get();
+        $imageLinks = \App\Models\imageLink::where('is_active', '=', 1)->get();
         SEOMeta::setTitle(__('word.home') . ' - ' .$setting["name_".session("lang")] );
         SEOMeta::setDescription($setting['description_'.session('lang')]);
         SEOMeta::setCanonical(Config::get('app.url'));
@@ -84,7 +87,7 @@ class PagesController extends Controller
         JsonLd::setTitle(__('word.home') . ' - ' .$setting["name_".session("lang")] );
         JsonLd::setDescription($setting['description_'.session('lang')]);
         JsonLd::addImage($image);
-        return view('frontend.index', compact('categories', 'sliders', 'links', 'blogs', 'galleries'));
+        return view('frontend.index', compact('categories', 'sliders', 'links', 'blogs', 'galleries', 'imageLinks'));
     }
     public function news($slug)
     {
@@ -172,5 +175,28 @@ class PagesController extends Controller
         JsonLd::setDescription($setting['description_'.session('lang')]);
         JsonLd::addImage($image);
         return view('frontend.gallery-single', compact('gallery', 'links'));
+    }
+    public function pagesSingle($slug)
+    {
+        $logo = \App\Models\SiteImage::first();
+        $page = PagesSetting::with('category')->where('slug', '=', $slug)->where('is_active', '=', 1)->firstOrFail();
+        // dd($page);
+        $pages = PagesSetting::where('pagesCategory_id', '=', $page['category']['id'])->where('id', '!=', $page->id)->where('is_active', '=', 1)->get();
+        $links = Link::where('is_active', '=', 1)->get();
+        $image = asset($logo->image);
+        SEOMeta::setTitle($page["title_".session("lang")].' - ' . $page->category['name_'.session('lang')]);
+        SEOMeta::setDescription(Str::limit(strip_tags($page['content'.session('lang')]), 150));
+        SEOMeta::setCanonical(Config::get('app.url') . "/pages-single/" . $page->slug);
+
+        OpenGraph::setTitle($page["title_".session("lang")].' - ' . $page->category['name_'.session('lang')]);
+        OpenGraph::setDescription(Str::limit(strip_tags($page['content'.session('lang')]), 150));
+        OpenGraph::setUrl(Config::get('app.url') . "/pages-single/" . $page->slug);
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addImage($image);
+        
+        JsonLd::setTitle($page["title_".session("lang")].' - ' . $page->category['name_'.session('lang')]);
+        JsonLd::setDescription(Str::limit(strip_tags($page['content'.session('lang')]), 150));
+        JsonLd::addImage($image);
+        return view('frontend.page-single', compact('pages', 'page', 'links'));
     }
 }

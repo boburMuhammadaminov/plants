@@ -14,5 +14,8 @@ return [
     'home' => 'Bosh sahifa',
     'news' => 'Yangiliklar',
     'gallery' => 'Galareya',
+    'f-size' => 'Shrift o\'lchami',
+    'color' => 'Sayt rangi',
+    'see-all' => 'Barchasini ko\'rish',
 
 ];

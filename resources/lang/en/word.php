@@ -14,6 +14,9 @@ return [
     'home' => 'Home',
     'news' => 'News',
     'gallery' => 'Gallery',
+    'f-size' => 'Font size',
+    'color' => 'Site color',
+    'see-all' => 'See all',
 
 
 

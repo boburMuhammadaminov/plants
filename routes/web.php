@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ImageLinkController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PagesCategoryController;
 use App\Http\Controllers\PagesController;
@@ -32,6 +33,8 @@ Route::get('/gallery', [PagesController::class, 'gallery'])->name('gallery');
 Route::get('/gallery-single/{slug}', [PagesController::class, 'gallerySingle'])->name('gallerySingle');
 Route::get('/news/{slug}', [PagesController::class, 'news'])->name('news');
 Route::get('/news-single/{slug}', [PagesController::class, 'newsSingle'])->name('newsSingle');
+Route::get('/pages/{slug}', [PagesController::class, 'pages'])->name('pages');
+Route::get('/pages-single/{slug}', [PagesController::class, 'pagesSingle'])->name('pagesSingle');
 
 Auth::routes(['register' => false]);
 
@@ -47,6 +50,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         'catPages' => PagesCategoryController::class,
         'blogs' => BlogController::class,
         'links'=> LinkController::class,
+        'imageLinks'=> ImageLinkController::class,
         'galleries'=> GalleryController::class,
         'sliders'=> SliderController::class,
         'settings'=> SettingController::class,

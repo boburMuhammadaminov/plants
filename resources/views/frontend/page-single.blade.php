@@ -17,11 +17,10 @@
         <div class="contact-wrapper">
           <div class="my-container d-block" style="padding: 0 15px !important;">
             <div class="top p-3">
-              <h4>{{$blog['title_'.session('lang')]}}</h4>
+              <h4>{{$page['title_'.session('lang')]}}</h4>
             </div>
-            <img src="{{asset($blog->image)}}" alt="{{$blog['title_'.session('lang')]}}" class="w-100">
             <div class="py-3" id="forImages">
-              {!! $blog['content_'.session('lang')] !!}
+              {!! $page['content_'.session('lang')] !!}
             </div>
           </div>
         </div>
@@ -29,11 +28,11 @@
       <div class="col-md-3">
         <div class="links">
           <ul>
-            @if (count($blogs) > 0)
+            @if (count($pages) > 0)
               <li>
                 <a href="Javascript:void(0);" class="h5">Aloqador yangiliklar</a>
               </li>
-              @foreach ($blogs as $news)
+              @foreach ($pages as $news)
               <li>
                 <a href="{{route('newsSingle', $news->slug)}}">
                   {{$news['title_'.session('lang')]}}
@@ -41,7 +40,7 @@
               </li>
               @endforeach
               <li>
-                <a href="{{route('news', $blog['category']['slug'])}}">{{__('word.see-all')}} <i class="fas fa-angle-right"></i></a>
+                <a href="{{route('news', $page['category']['slug'])}}">{{__('word.see-all')}} <i class="fas fa-angle-right"></i></a>
               </li>
             @else
               <li>

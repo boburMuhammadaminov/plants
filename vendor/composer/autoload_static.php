@@ -598,6 +598,7 @@ class ComposerStaticInit5087ed092c32f0b28fa9b19e7768e0c8
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Gallery' => __DIR__ . '/../..' . '/app/Models/Gallery.php',
         'App\\Models\\Image' => __DIR__ . '/../..' . '/app/Models/Image.php',
+        'App\\Models\\ImageLink' => __DIR__ . '/../..' . '/app/Models/ImageLink.php',
         'App\\Models\\Link' => __DIR__ . '/../..' . '/app/Models/Link.php',
         'App\\Models\\PagesCategory' => __DIR__ . '/../..' . '/app/Models/PagesCategory.php',
         'App\\Models\\PagesSetting' => __DIR__ . '/../..' . '/app/Models/PagesSetting.php',

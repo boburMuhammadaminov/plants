@@ -88,7 +88,7 @@
         <i id="modalCloser" class="fa fa-times"></i>
         <div class="size">
           <h5 class="title">
-            Shrift o'lchami
+            {{__('word.f-size')}}:
           <h5 />
           <div>
             <p id="smallFont" class="example" style="font-size: 16px !important;">
@@ -101,7 +101,7 @@
         </div>
         <div class="theme">
           <h5 class="title">
-            Sayt rangi:
+            {{__('word.color')}}:
           </h5>
           <div>
             <div id="colorful" class="example">
@@ -250,7 +250,7 @@
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
-                      href="#"
+                      href="javascript:void(0);"
                       data-bs-toggle="dropdown"
                     >
                     {{$item['name_'.session('lang')]}}
@@ -259,7 +259,7 @@
                     <ul class="dropdown-menu fade-up">
                       @foreach ($item->pages as $page)
                       <li>
-                        <a class="dropdown-item" href="#"> {{$page['title_'.session('lang')]}}</a>
+                        <a class="dropdown-item" href="{{route('pagesSingle', $page->slug)}}"> {{$page['title_'.session('lang')]}}</a>
                       </li>
                       @endforeach
                     </ul>

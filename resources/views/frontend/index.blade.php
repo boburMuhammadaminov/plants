@@ -123,118 +123,30 @@
 
 <!-- ad begin -->
 
-<section class="ad">
+{{-- <section class="ad">
     <div class="my-container">
         <a href="https://my.gov.uz/uz/" target="_blank">
         <img src="{{asset('frontend/images/my.gov.png')}}" />
         </a>
     </div>
-</section>
+</section> --}}
 
 <!-- ad end -->
 
 <!-- useful links begin -->
 
 <section class="useful">
-    <div class="my-container">
-        <div class="useful-links owl-carousel owl-theme">
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-            <img src="{{asset('frontend/images/tashabbus.jpeg')}}" />
-            </a>
-        </div>
-        </div>
+  <div class="my-container">
+    <div class="useful-links owl-carousel owl-theme">
+      @foreach ($imageLinks as $imageLink)
+      <div class="item">
+          <a href="{{$imageLink->link}}">
+          <img src="{{asset($imageLink->image)}}" alt="{{$imageLink['title_'.session('lang')]}}" />
+          </a>
+      </div>
+      @endforeach
     </div>
+  </div>
 </section>
 
 <!-- useful links end -->

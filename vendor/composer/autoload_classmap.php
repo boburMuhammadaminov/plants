@@ -43,6 +43,7 @@ return array(
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
     'App\\Models\\Image' => $baseDir . '/app/Models/Image.php',
+    'App\\Models\\ImageLink' => $baseDir . '/app/Models/ImageLink.php',
     'App\\Models\\Link' => $baseDir . '/app/Models/Link.php',
     'App\\Models\\PagesCategory' => $baseDir . '/app/Models/PagesCategory.php',
     'App\\Models\\PagesSetting' => $baseDir . '/app/Models/PagesSetting.php',

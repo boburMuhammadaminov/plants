@@ -109,7 +109,7 @@
                     <img src="{{asset('/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{Auth::user()->name}}</a>
+                    <a href="{{ route('admin.profile') }}" class="d-block">{{Auth::user()->name}}</a>
                 </div>
             </div>
 
@@ -213,6 +213,18 @@
                             <i class="nav-icon bi bi-link-45deg"></i>
                             <p>
                                 Foydali linklar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.imageLinks.index')}}" class="nav-link @php
+                            if (Str::substr(Request::getRequestUri(), 0, 17) == '/admin/imageLinks') {
+                                echo 'active';
+                            }
+                        @endphp">
+                            <i class="nav-icon bi bi-link-45deg"></i>
+                            <p>
+                                Foydali linklar(rasm)
                             </p>
                         </a>
                     </li>
