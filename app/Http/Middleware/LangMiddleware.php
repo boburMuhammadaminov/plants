@@ -20,10 +20,10 @@ class LangMiddleware
     {
         if (session('lang')){
             $locale = session()->get('lang');
-            App::setLocale($locale, Config::get('app.locale'));
+            App::setLocale($locale);
         }else{
-            $locale = session()->put('lang',Config::get('app.locale'));
-            App::setLocale($locale, Config::get('app.locale'));
+            $locale = session()->put('lang', Config::get('app.locale'));
+            App::setLocale($locale);
         }
         return $next($request);
     }
