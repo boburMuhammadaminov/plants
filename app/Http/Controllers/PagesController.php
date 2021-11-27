@@ -73,7 +73,7 @@ class PagesController extends Controller
         $sliders = Slider::where('is_active', '=', 1)->get();
         $blogs = Blog::with('category')->where('is_active', '=', 1)->limit(4)->get();
         $links = \App\Models\Link::where('is_active', '=', 1)->get();
-        $imageLinks = \App\Models\imageLink::where('is_active', '=', 1)->get();
+        $imageLinks = \App\Models\ImageLink::where('is_active', '=', 1)->get();
         SEOMeta::setTitle(__('word.home') . ' - ' .$setting["name_".session("lang")] );
         SEOMeta::setDescription($setting['description_'.session('lang')]);
         SEOMeta::setCanonical(Config::get('app.url'));
