@@ -17,6 +17,12 @@ return [
     'f-size' => 'Font size',
     'color' => 'Site color',
     'see-all' => 'See all',
+    'contact' => 'Contact', 
+    'name' => 'Your name', 
+    'phone' => 'Your phone number', 
+    'email' => 'Your e-mail', 
+    'message' => 'Your message', 
+    'send' => 'Send', 
 
 
 

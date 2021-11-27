@@ -87,16 +87,22 @@
 
 <!-- media section begin -->
 
-@if (count($galleries) > 0)
+@if (count($galleries) == 2)
   <section class="media">
       <div class="my-container">
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-flex justify-content-between">
+                <h4 style="color: #01CC4E;">{{__('word.gallery')}}</h4>
+                <a href="{{route('gallery')}}" class="myHover">{{__('word.see-all')}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           @foreach ($galleries as $gallery)
           <div class="col-md-6">
-              <div class="top">
-              <h4>Rasmlar</h4>
-              <a href="#">Barcha rasmlar</a>
-              </div>
               <a href="{{route('gallerySingle', $gallery->slug)}}">
               <div class="main">
                   <img
@@ -105,7 +111,7 @@
                   />
                   <div class="content">
                   <p class="title">
-                    {{$gallery['title_'.session('lang')]}}
+                    {{Str::limit($gallery['title_'.session('lang')], 55)}}
                   </p>
                   <div class="date">{{$gallery->created_at->format('d.m.Y')}}</div>
                   </div>
@@ -156,7 +162,7 @@
 <section class="map">
     <div class="my-container">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.1925733099106!2d71.77949746578281!3d40.38242437936923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb83a4e74c1d51%3A0x74f191ca540db19!2siTeach%20Academy!5e0!3m2!1suz!2s!4v1637403974670!5m2!1suz!2s"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1650.9055065219227!2d69.34956705549729!3d41.36857583874566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef389904ded01%3A0x85b7d5878032d7f3!2sO&#39;simliklarni%20himoya%20qilish%20ilmiy%20tadqiqot%20instituti!5e0!3m2!1sen!2s!4v1637987732273!5m2!1sen!2s"
         width="100%"
         height="450"
         style="border: 0"

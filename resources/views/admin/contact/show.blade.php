@@ -31,17 +31,15 @@
                                 {{ $contact->name }}
                             </td>
                         </tr>
+                        @if ($contact->email)
                         <tr>
                             <th>Email</th>
                             <td>{{ $contact->email }}</td>
                         </tr>
+                        @endif
                         <tr>
                             <th>Nomer</th>
                             <td>{{ $contact->phone }}</td>
-                        </tr>
-                        <tr>
-                            <th>Viloyat</th>
-                            <td>{{ $contact->province }}</td>
                         </tr>
                         <tr>
                             <th>Xabar</th>

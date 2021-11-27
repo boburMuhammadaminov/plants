@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImageLinkController;
@@ -35,6 +36,8 @@ Route::get('/news/{slug}', [PagesController::class, 'news'])->name('news');
 Route::get('/news-single/{slug}', [PagesController::class, 'newsSingle'])->name('newsSingle');
 Route::get('/pages/{slug}', [PagesController::class, 'pages'])->name('pages');
 Route::get('/pages-single/{slug}', [PagesController::class, 'pagesSingle'])->name('pagesSingle');
+Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+Route::post('/contact', [PagesController::class, 'contactAdmin'])->name('contactAdmin');
 
 Auth::routes(['register' => false]);
 
@@ -55,7 +58,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         'sliders'=> SliderController::class,
         'settings'=> SettingController::class,
         'social'=>SocialSettingsController::class,
-        // 'contact'=>ContactController::class,
+        'contact'=>ContactController::class,
         'page'=>PagesSettingController::class,
         'siteImages' => SiteImageController::class,
     ]);

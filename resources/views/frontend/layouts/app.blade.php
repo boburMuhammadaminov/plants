@@ -60,6 +60,7 @@
     <!-- my custom css file -->
 
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" />
+    <link rel="stylesheet" href="{{asset('frontend/css/myStyle.css')}}" />
 
     <!-- ---------- -->
 
@@ -268,6 +269,9 @@
                   </li>
                   @endif
                   @endforeach
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{{route('contact')}}">{{__('word.contact')}} </a>
+                  </li>
                 </ul>
               </div>
               <!-- navbar-collapse.// -->

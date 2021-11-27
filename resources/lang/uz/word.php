@@ -16,6 +16,12 @@ return [
     'gallery' => 'Galareya',
     'f-size' => 'Shrift o\'lchami',
     'color' => 'Sayt rangi',
-    'see-all' => 'Barchasini ko\'rish',
+    'see-all' => 'Barchasini ko\'rish', 
+    'contact' => 'Bog\'lanish', 
+    'name' => 'Ismingiz', 
+    'phone' => 'Telefon raqamingiz', 
+    'email' => 'Elektron manzilingiz', 
+    'message' => 'Xabaringiz', 
+    'send' => 'Jo\'natish', 
 
 ];

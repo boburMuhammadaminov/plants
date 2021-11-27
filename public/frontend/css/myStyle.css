@@ -1,0 +1,6 @@
+.myHover{
+  color: #000;
+}
+.myHover:hover{
+  color: #01CC4E !important;
+}

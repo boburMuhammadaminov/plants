@@ -228,7 +228,7 @@
                             </p>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a href="{{route('admin.contact.index')}}" class="nav-link @php
                             if (Str::substr(Request::getRequestUri(), 0, 14) == '/admin/contact') {
                                 echo 'active';
@@ -239,7 +239,7 @@
                                 Xabarlar
                             </p>
                         </a>
-                    </li> --}}
+                    </li>
 
                     <li class="nav-item
                         @if(Str::substr(Request::getRequestUri(), 0, 15) == '/admin/settings' ||Str::substr(Request::getRequestUri(), 0, 13) == '/admin/social'|| Str::substr(Request::getRequestUri(), 0, 17) == '/admin/siteImages')

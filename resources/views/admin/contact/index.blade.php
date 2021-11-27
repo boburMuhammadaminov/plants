@@ -1,27 +1,16 @@
 @extends('admin.layouts.app')
 @section('title')
-    SmS
+    Messages
 @endsection
 @section('content')
 
     <div class="row">
         <div class="col-md-12">
-            @if (count($read)>0)
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-10 p-3">
-                            <a href="{{route('admin.contact.archive')}}" class="card-title cursor-pointer" style="cursor: pointer;">Arxivni ko'rish ({{count($read)}})</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-10 p-3">
-                            <h3 class="card-title">Yangi xabarlar</h3>
+                            <h3 class="card-title">Xabarlar</h3>
                         </div>
                     </div>
                 </div>
@@ -31,15 +20,17 @@
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>Ism</th>
-                            <th>Email</th>
                             <th>Xabar</th>
                             <th>Harakatlar</th>
                         </tr>
-                        @foreach($unread as $contact)
-                            <tr>
+                        @foreach($contacts as $contact)
+                            <tr class="
+                            @if(!$contact->is_reviewed)
+                            font-weight-bold
+                            @endif
+                            ">
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$contact->name}}</td>
-                                <td>{{$contact->email}}</td>
                                 <td>{{\Illuminate\Support\Str::limit($contact->sms, 50)}}</td>
                                 <td>
                                     <div class="btn-group">
@@ -59,7 +50,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    {{$unread->links()}}
+                    {{$contacts->links()}}
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Gallery;
 use App\Models\Image;
 use App\Models\Link;
@@ -44,14 +45,22 @@ class PagesController extends Controller
         }
         return back();
     }
-    public function contactSend(Request $request)
+    //contact
+    public function contactAdmin(Request $request)
     {
         $data = $request->validate([
             'name'=>'required|max:255',
-            'email'=>'required|max:255',
             'phone'=>'required|max:255',
             'sms'=>'required',
         ]);
+
+        if ($request->has('email') != 'NULL') {
+            $data['email'] = $request->validate(['email'=>'email',]);
+        }
+
+        Contact::create($data);
+        return back()->with('send', 'Successfully send!');
+
     }
     //Language
     public function lang($lang)
@@ -198,5 +207,25 @@ class PagesController extends Controller
         JsonLd::setDescription(Str::limit(strip_tags($page['content'.session('lang')]), 150));
         JsonLd::addImage($image);
         return view('frontend.page-single', compact('pages', 'page', 'links'));
+    }
+    public function contact()
+    {
+        $setting = \App\Models\Setting::first();
+        $logo = \App\Models\SiteImage::first();
+        $image = asset($logo->image);
+        SEOMeta::setTitle(__('word.contact') . ' - ' .$setting["name_".session("lang")] );
+        SEOMeta::setDescription($setting['description_'.session('lang')]);
+        SEOMeta::setCanonical(Config::get('app.url').'/contact');
+
+        OpenGraph::setTitle(__('word.contact') . ' - ' .$setting["name_".session("lang")] );
+        OpenGraph::setDescription($setting['description_'.session('lang')]);
+        OpenGraph::setUrl(Config::get('app.url').'/contact');
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addImage($image);
+        
+        JsonLd::setTitle(__('word.contact') . ' - ' .$setting["name_".session("lang")] );
+        JsonLd::setDescription($setting['description_'.session('lang')]);
+        JsonLd::addImage($image);
+        return view('frontend.contact');
     }
 }
