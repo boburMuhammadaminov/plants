@@ -22,7 +22,8 @@ class LangMiddleware
             $locale = session()->get('lang');
             App::setLocale($locale);
         }else{
-            $locale = session()->put('lang', Config::get('app.locale'));
+            session()->put('lang', Config::get('app.locale'));
+            $locale = session()->get('lang');
             App::setLocale($locale);
         }
         return $next($request);

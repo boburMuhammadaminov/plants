@@ -41,7 +41,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <form action="{{route('admin.activation', $page->id)}}" method="POST">
-                                            <input type="hidden" name="type" value="page">
+                                            <input type="hidden" name="type" value="pagesSetting">
                                             @csrf
                                             {!! $page->getStatus() !!}
                                         </form>

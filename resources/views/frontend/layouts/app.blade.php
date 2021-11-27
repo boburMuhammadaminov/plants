@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{asset('frontend/images/icon.svg')}}" />
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
@@ -80,7 +81,7 @@
     )->get();
   @endphp
   <body>
-
+    
     <!-- specialViewModal begin -->
 
     <div id="specialViewModal">
@@ -186,7 +187,7 @@
                   <p>{{__('word.our address')}}:</p>
                   <span>{{$setting['address_'.session('lang')]}}</span>
                 </a>
-                <a href="#">
+                <a href="mailto:{{$setting['email']}}">
                   <span>{{__('word.email address')}}: {{$setting['email']}}</span>
                 </a>
               </div>

@@ -181,7 +181,7 @@ class PagesController extends Controller
         $logo = \App\Models\SiteImage::first();
         $page = PagesSetting::with('category')->where('slug', '=', $slug)->where('is_active', '=', 1)->firstOrFail();
         // dd($page);
-        $pages = PagesSetting::where('pagesCategory_id', '=', $page['category']['id'])->where('id', '!=', $page->id)->where('is_active', '=', 1)->get();
+        $pages = PagesSetting::where('pagesCategory_id', '=', $page['category']['id'])->where('is_active', '=', 1)->get();
         $links = Link::where('is_active', '=', 1)->get();
         $image = asset($logo->image);
         SEOMeta::setTitle($page["title_".session("lang")].' - ' . $page->category['name_'.session('lang')]);

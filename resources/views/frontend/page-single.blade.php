@@ -29,19 +29,17 @@
         <div class="links">
           <ul>
             @if (count($pages) > 0)
-              <li>
-                <a href="Javascript:void(0);" class="h5">Aloqador yangiliklar</a>
-              </li>
               @foreach ($pages as $news)
               <li>
-                <a href="{{route('newsSingle', $news->slug)}}">
+                <a href="{{route('pagesSingle', $news->slug)}}" class="
+                  @if ($page->id === $news->id)
+                    active  
+                  @endif 
+                  ">
                   {{$news['title_'.session('lang')]}}
                 </a>
               </li>
               @endforeach
-              <li>
-                <a href="{{route('news', $page['category']['slug'])}}">{{__('word.see-all')}} <i class="fas fa-angle-right"></i></a>
-              </li>
             @else
               <li>
                 <a href="Javascript:void(0);" class="h5">Foydali halovalar</a>
