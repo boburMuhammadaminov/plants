@@ -23,6 +23,15 @@ return [
     'email' => 'Ваш адрес электронной почты', 
     'message' => 'Твое сообщение', 
     'send' => 'Отправить', 
+    'information' => 'Информация', 
+    'autobiography' => 'Автобиография', 
+    'charges' => 'Обязанности', 
+    'staffPhone' => 'Телефон', 
+    'staffEmail' => 'Эл. почта', 
+    'staffReception' => 'Дни приема',  
+    'usefullLinks' => 'Полезные ссылки', 
+    'ourStaff' => 'Наша команда', 
+
 
 
 ];

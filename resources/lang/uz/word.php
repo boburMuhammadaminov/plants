@@ -23,5 +23,13 @@ return [
     'email' => 'Elektron manzilingiz', 
     'message' => 'Xabaringiz', 
     'send' => 'Jo\'natish', 
+    'information' => 'Ma\'lumot', 
+    'autobiography' => 'Tarjimai hol', 
+    'charges' => 'Majburiyatlari', 
+    'staffPhone' => 'Telefon', 
+    'staffEmail' => 'Elektron pochta', 
+    'staffReception' => 'Qabul kunlari', 
+    'usefullLinks' => 'Foydali halovalar', 
+    'ourStaff' => 'Jamoamiz', 
 
 ];

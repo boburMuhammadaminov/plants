@@ -1087,7 +1087,7 @@ footer .isoft a {
   padding: 20px;
 }
 
-.main .management_grid .item .tab-content #home .wrapper {
+.main .management_grid .item .tab-content .home .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1099,43 +1099,43 @@ footer .isoft a {
           justify-content: flex-start;
 }
 
-.main .management_grid .item .tab-content #home .wrapper img {
+.main .management_grid .item .tab-content .home .wrapper img {
   margin-right: 15px;
   border-radius: 5px;
   max-width: 150px;
 }
 
-.main .management_grid .item .tab-content #home .wrapper .text .job {
+.main .management_grid .item .tab-content .home .wrapper .text .job {
   font-size: 18px;
   margin-bottom: 5px;
 }
 
-.main .management_grid .item .tab-content #home .wrapper .text .name {
+.main .management_grid .item .tab-content .home .wrapper .text .name {
   color: #137461;
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-.main .management_grid .item .tab-content #home .wrapper .text .about {
+.main .management_grid .item .tab-content .home .wrapper .text .about {
   font-size: 14px;
 }
 
-.main .management_grid .item .tab-content #home .wrapper .text .about span {
+.main .management_grid .item .tab-content .home .wrapper .text .about span {
   font-weight: bolder;
 }
 
-.main .management_grid .item .tab-content #profile .wrapper ul li {
+.main .management_grid .item .tab-content .profile .wrapper ul li {
   text-indent: 10px;
   margin-bottom: 10px;
 }
 
-.main .management_grid .item .tab-content #contact .wrapper span {
+.main .management_grid .item .tab-content .contact .wrapper span {
   font-weight: 600;
   text-indent: 10px;
 }
 
-.main .management_grid .item .tab-content #contact .wrapper ul li {
+.main .management_grid .item .tab-content .contact .wrapper ul li {
   text-indent: 10px;
   margin-bottom: 10px;
 }

@@ -240,6 +240,18 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.staff.index')}}" class="nav-link @php
+                            if (Str::substr(Request::getRequestUri(), 0, 12) == '/admin/staff') {
+                                echo 'active';
+                            }
+                        @endphp">
+                            <i class="nav-icon fas fa-users-cog"></i>
+                            <p>
+                                Rahbariyat
+                            </p>
+                        </a>
+                    </li>
 
                     <li class="nav-item
                         @if(Str::substr(Request::getRequestUri(), 0, 15) == '/admin/settings' ||Str::substr(Request::getRequestUri(), 0, 13) == '/admin/social'|| Str::substr(Request::getRequestUri(), 0, 17) == '/admin/siteImages')

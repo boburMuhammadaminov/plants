@@ -751,7 +751,7 @@ footer {
           border-radius: 5px;
           padding: 20px;
         }
-        #home {
+        .home {
           .wrapper {
             display: flex;
             align-items: flex-start;
@@ -781,7 +781,7 @@ footer {
             }
           }
         }
-        #profile {
+        .profile {
           .wrapper {
             ul {
               li {
@@ -791,7 +791,7 @@ footer {
             }
           }
         }
-        #contact {
+        .contact {
           .wrapper {
             span {
               font-weight: 600;

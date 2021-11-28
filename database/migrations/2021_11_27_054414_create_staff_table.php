@@ -15,13 +15,25 @@ class CreateStaffTable extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('position');
+            $table->string('name_uz');
+            $table->string('name_en');
+            $table->string('name_ru');
+            $table->string('position_uz');
+            $table->string('position_en');
+            $table->string('position_ru');
             $table->string('phone');
-            $table->string('reception');
+            $table->string('email');
+            $table->string('reception_uz');
+            $table->string('reception_en');
+            $table->string('reception_ru');
             $table->string('image');
-            $table->longText('biography');
-            $table->longText('charges');
+            $table->longText('biography_uz');
+            $table->longText('biography_en');
+            $table->longText('biography_ru');
+            $table->longText('charges_uz');
+            $table->longText('charges_en');
+            $table->longText('charges_ru');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

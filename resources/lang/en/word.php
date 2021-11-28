@@ -23,6 +23,15 @@ return [
     'email' => 'Your e-mail', 
     'message' => 'Your message', 
     'send' => 'Send', 
+    'information' => 'Information', 
+    'autobiography' => 'Autobiography', 
+    'charges' => 'Responsibilities', 
+    'staffPhone' => 'Phone', 
+    'staffEmail' => 'E-mail', 
+    'staffReception' => 'Days of reception', 
+    'usefullLinks' => 'Usefull links', 
+    'ourStaff' => 'Our staff', 
+
 
 
 

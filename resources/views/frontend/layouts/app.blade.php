@@ -226,6 +226,9 @@
                   <li class="nav-item active">
                     <a class="nav-link" href="{{route('home')}}">{{__('word.home')}} </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('staff')}}">{{__('word.ourStaff')}} </a>
+                  </li>
                   <li class="nav-item active">
                     <a class="nav-link" href="{{route('gallery')}}">{{__('word.gallery')}} </a>
                   </li>

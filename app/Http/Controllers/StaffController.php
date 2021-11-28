@@ -14,7 +14,8 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $staffs = Staff::paginate(20);
+        return view('admin.staff.index', compact('staffs'));
     }
 
     /**
@@ -24,7 +25,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.staff.create');
     }
 
     /**
@@ -35,7 +36,35 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name_uz' => 'required|max:255',
+            'name_en' => 'required|max:255',
+            'name_ru' => 'required|max:255',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'position_uz' => 'required|max:255',
+            'position_en' => 'required|max:255',
+            'position_ru' => 'required|max:255',
+            'reception_uz' => 'required|max:255',
+            'reception_en' => 'required|max:255',
+            'reception_ru' => 'required|max:255',
+            'biography_uz' => 'required',
+            'biography_en' => 'required',
+            'biography_ru' => 'required',
+            'charges_uz' => 'required',
+            'charges_en' => 'required',
+            'charges_ru' => 'required',
+        ]);
+
+        if(!file_exists('uploads/staff/')){
+            mkdir('uploads/staff/', 0777, true);
+        }
+        $imageName = md5(rand(1000, 9999).microtime()).'.'.$request->file('image')->getClientOriginalExtension();
+        $request->file('image') ->move(public_path('/uploads/staff/'), $imageName); 
+        $data['image'] = 'uploads/staff/'.$imageName;
+        Staff::create($data);
+        session()->flash('message', 'Muvafaqqiyatli yaratildi!');
+        return redirect()->route('admin.staff.index');
     }
 
     /**
@@ -46,9 +75,9 @@ class StaffController extends Controller
      */
     public function show(Staff $staff)
     {
-        //
+        return view('admin.staff.show', compact('staff'));
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -57,7 +86,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        //
+        return view('admin.staff.edit', compact('staff'));
     }
 
     /**
@@ -69,9 +98,36 @@ class StaffController extends Controller
      */
     public function update(Request $request, Staff $staff)
     {
-        //
-    }
+        $data = $request->validate([
+            'name_uz' => 'required|max:255',
+            'name_en' => 'required|max:255',
+            'name_ru' => 'required|max:255',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'position_uz' => 'required|max:255',
+            'position_en' => 'required|max:255',
+            'position_ru' => 'required|max:255',
+            'reception_uz' => 'required|max:255',
+            'reception_en' => 'required|max:255',
+            'reception_ru' => 'required|max:255',
+            'biography_uz' => 'required',
+            'biography_en' => 'required',
+            'biography_ru' => 'required',
+            'charges_uz' => 'required',
+            'charges_en' => 'required',
+            'charges_ru' => 'required',
+        ]);
 
+        if ($request->hasFile('image')) {
+            $imageName = md5(rand(1000, 9999).microtime()).'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image') ->move(public_path('/uploads/staff/'), $imageName); 
+            $data['image'] = 'uploads/staff/'.$imageName;
+        }
+        $staff->update($data);
+        session()->flash('message', 'Muvafaqqiyatli tahrirlandi!');
+        return redirect()->route('admin.staff.index');
+    }
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -80,6 +136,9 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        //
+        unlink($staff->image);
+        $staff->delete();
+        session()->flash('message', 'Muvafaqqiyatli O\'chirildi!');
+        return redirect()->route('admin.staff.index');
     }
 }

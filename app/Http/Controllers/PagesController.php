@@ -11,6 +11,7 @@ use App\Models\Link;
 use App\Models\PagesCategory;
 use App\Models\PagesSetting;
 use App\Models\Slider;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -227,5 +228,27 @@ class PagesController extends Controller
         JsonLd::setDescription($setting['description_'.session('lang')]);
         JsonLd::addImage($image);
         return view('frontend.contact');
+    }
+    public function staff()
+    {
+        $setting = \App\Models\Setting::first();
+        $logo = \App\Models\SiteImage::first();
+        $image = asset($logo->image);
+        SEOMeta::setTitle(__('word.staff') . ' - ' .$setting["name_".session("lang")] );
+        SEOMeta::setDescription($setting['description_'.session('lang')]);
+        SEOMeta::setCanonical(Config::get('app.url').'/staff');
+
+        OpenGraph::setTitle(__('word.staff') . ' - ' .$setting["name_".session("lang")] );
+        OpenGraph::setDescription($setting['description_'.session('lang')]);
+        OpenGraph::setUrl(Config::get('app.url').'/staff');
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addImage($image);
+        
+        JsonLd::setTitle(__('word.staff') . ' - ' .$setting["name_".session("lang")] );
+        JsonLd::setDescription($setting['description_'.session('lang')]);
+        JsonLd::addImage($image);
+        $staffs = Staff::where('is_active', '=', 1)->get();
+        $links = Link::where('is_active', '=', 1)->get();
+        return view('frontend.management', compact('staffs', 'links'));
     }
 }

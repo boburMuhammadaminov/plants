@@ -15,6 +15,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SiteImageController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialSettingsController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::get('/pages/{slug}', [PagesController::class, 'pages'])->name('pages');
 Route::get('/pages-single/{slug}', [PagesController::class, 'pagesSingle'])->name('pagesSingle');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'contactAdmin'])->name('contactAdmin');
+Route::get('/staff', [PagesController::class, 'staff'])->name('staff');
 
 Auth::routes(['register' => false]);
 
@@ -61,6 +63,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         'contact'=>ContactController::class,
         'page'=>PagesSettingController::class,
         'siteImages' => SiteImageController::class,
+        'staff' => StaffController::class,
     ]);
 
     // Active and inactive

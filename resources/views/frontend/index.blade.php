@@ -143,6 +143,9 @@
 
 <section class="useful">
   <div class="my-container">
+    <h4 class="p-2 mt-3" style="color: #01CC4E;">
+      {{__('word.usefullLinks')}}
+    </h4>
     <div class="useful-links owl-carousel owl-theme">
       @foreach ($imageLinks as $imageLink)
       <div class="item">
