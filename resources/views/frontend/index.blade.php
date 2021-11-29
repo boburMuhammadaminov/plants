@@ -71,6 +71,7 @@
                 </h4>
                 <img
                     src="{{asset($blog->image)}}"
+                    alt="{{$blog['title_'.session('lang')]}}"
                     class="image"
                 />
                 <p class="text">

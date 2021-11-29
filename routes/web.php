@@ -40,6 +40,7 @@ Route::get('/pages-single/{slug}', [PagesController::class, 'pagesSingle'])->nam
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'contactAdmin'])->name('contactAdmin');
 Route::get('/staff', [PagesController::class, 'staff'])->name('staff');
+Route::get('/sitemap', [PagesController::class, 'sitemap'])->name('sitemap');
 
 Auth::routes(['register' => false]);
 

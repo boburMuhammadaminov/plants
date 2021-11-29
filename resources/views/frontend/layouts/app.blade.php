@@ -130,7 +130,7 @@
             <div class="col-md-6 col-sm-12">
               <ul class="in-row special">
                 <li>
-                  <a href="#"
+                  <a href="{{route('sitemap')}}"
                     ><i class="fa fa-sitemap"></i><span>{{__('word.site map')}}</span></a
                   >
                 </li>
@@ -255,7 +255,6 @@
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
-                      href="javascript:void(0);"
                       data-bs-toggle="dropdown"
                     >
                     {{$item['name_'.session('lang')]}}
