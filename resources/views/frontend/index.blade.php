@@ -88,42 +88,57 @@
 
 <!-- media section begin -->
 
-@if (count($galleries) == 2)
-  <section class="media">
-      <div class="my-container">
-        <div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="d-flex justify-content-between">
-                <h4 style="color: #01CC4E;">{{__('word.gallery')}}</h4>
-                <a href="{{route('gallery')}}" class="myHover">{{__('word.see-all')}}</a>
-              </div>
-            </div>
-          </div>
-        </div>
+<section class="media">
+    <div class="my-container">
+      <div>
         <div class="row">
-          @foreach ($galleries as $gallery)
-          <div class="col-md-6">
-              <a href="{{route('gallerySingle', $gallery->slug)}}">
-              <div class="main">
-                  <img
-                  class="background"
-                  src="{{asset($gallery->images[0]['image'])}}" alt="{{$gallery['title_'.session('lang')]}}"
-                  />
-                  <div class="content">
-                  <p class="title">
-                    {{Str::limit($gallery['title_'.session('lang')], 55)}}
-                  </p>
-                  <div class="date">{{$gallery->created_at->format('d.m.Y')}}</div>
-                  </div>
-              </div>
-              </a>
-          </div>
-          @endforeach
         </div>
       </div>
-  </section>
-@endif
+      <div class="row">
+        <div class="col-md-6">
+          <div class="top">
+            <h4>{{__('word.gallery')}}</h4>
+            <a href="{{route('gallery')}}">{{__('word.see-all')}}</a>
+          </div>
+          <a href="{{route('gallerySingle', $gallery->slug)}}">
+            <div class="main">
+                <img
+                class="background"
+                src="{{asset($gallery->images[0]['image'])}}" alt="{{$gallery['title_'.session('lang')]}}"
+                />
+                <div class="content">
+                <p class="title">
+                  {{Str::limit($gallery['title_'.session('lang')], 55)}}
+                </p>
+                <div class="date">{{$gallery->created_at->format('d.m.Y')}}</div>
+                </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <div class="top">
+            <h4>{{__('word.video')}}</h4>
+            <a href="{{route('videos')}}">{{__('word.see-all')}}</a>
+          </div>
+          <a data-fancybox data-width="100%" href="{{$video->video}}">
+            <div class="main">
+                <img
+                class="background"
+                src="{{$video->thumbnail}}" alt="{{$video['title_'.session('lang')]}}"
+                />
+                <img class="play" src="frontend/images/video-play.svg" alt="play-image">
+                <div class="content">
+                <p class="title">
+                  {{Str::limit($video['title_'.session('lang')], 55)}}
+                </p>
+                <div class="date">{{$video->created_at->format('d.m.Y')}}</div>
+                </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
 
 <!-- media section end -->
 

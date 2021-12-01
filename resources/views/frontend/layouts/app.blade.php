@@ -70,6 +70,8 @@
     $setting = \App\Models\Setting::first();
     $logo = \App\Models\SiteImage::first();
     $socials = \App\Models\SocialSettings::where('is_active', '=', 1)->get();
+    $galleriesMenu = \App\Models\Gallery::where('is_active', '=', 1)->get();
+    $videosMenu = \App\Models\Vidoe::where('is_active', '=', 1)->get();
     $pagesCategories = \App\Models\PagesCategory::with(
       array(
         'pages' => function($query){ $query->where('is_active', '=', 1); }
@@ -80,6 +82,12 @@
         'blogs' => function($query){ $query->where('is_active', '=', 1); }
       )
     )->get();
+    $staffCategories = \App\Models\StaffCategory::with(
+      array(
+        'staff' => function($query){ $query->where('is_active', '=', 1); }
+      )
+    )->get();
+    // dd($staffCategories);
   @endphp
   <body>
     
@@ -226,32 +234,66 @@
                   <li class="nav-item active">
                     <a class="nav-link" href="{{route('home')}}">{{__('word.home')}} </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('staff')}}">{{__('word.ourStaff')}} </a>
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{{route('gallery')}}">{{__('word.gallery')}} </a>
-                  </li>
+                  @foreach ($pagesCategories as $item)
+                  @if ($item->slug == "information-service")
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
-                      href="#"
                       data-bs-toggle="dropdown"
                     >
-                    {{__('word.news')}}
+                    {{$item['name_'.session('lang')]}}
                     </a>
                     @if (count($newsCategories) > 0)
                     <ul class="dropdown-menu fade-up">
                       @foreach ($newsCategories as $news)
-                      <li>
-                        <a class="dropdown-item" href="{{route('news', $news->slug)}}"> {{$news['name_'.session('lang')]}}</a>
-                      </li>
+                        @if (count($news->blogs)>0)
+                          <li>
+                            <a class="dropdown-item" href="{{route('news', $news->slug)}}"> {{$news['name_'.session('lang')]}}</a>
+                          </li>
+                        @endif
                       @endforeach
+                      @if (count($videosMenu)>0)
+                      <li>
+                        <a class="dropdown-item" href="{{route('videos')}}">{{__('word.video')}}</a>
+                      </li>
+                      @endif
+                      @if (count($galleriesMenu)>0)
+                      <li>
+                        <a class="dropdown-item" href="{{route('gallery')}}">{{__('word.gallery')}}</a>
+                      </li>
+                      @endif
                     </ul>
                     @endif
                   </li>
-                  @foreach ($pagesCategories as $item)
-                  @if (count($item->pages) > 0)
+                  @elseif($item->slug == "agency")
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                    >
+                    {{$item['name_'.session('lang')]}}
+                    </a>
+                    <ul class="dropdown-menu fade-up">
+                      @if (count($staffCategories) > 0)
+                        @foreach ($staffCategories as $staff)
+                          @if (count($staff->staff)>0)
+                          <li>
+                            <a class="dropdown-item text-wrap" href="{{route('staff', $staff->slug)}}"> {{$staff['name_'.session('lang')]}}</a>
+                          </li>
+                          @endif
+                        @endforeach
+                      @endif
+                      @foreach ($item->pages as $page)
+                      <li>
+                        <a class="dropdown-item text-wrap" href="{{route('pagesSingle', $page->slug)}}"> {{$page['title_'.session('lang')]}}</a>
+                      </li>
+                      @endforeach
+                      <li>
+                        <a class="dropdown-item text-wrap" href="{{route('contact')}}"> {{__('word.contact')}}</a>
+                      </li>
+                    </ul>
+                  </li>
+                  @else
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
@@ -263,7 +305,7 @@
                     <ul class="dropdown-menu fade-up">
                       @foreach ($item->pages as $page)
                       <li>
-                        <a class="dropdown-item" href="{{route('pagesSingle', $page->slug)}}"> {{$page['title_'.session('lang')]}}</a>
+                        <a class="dropdown-item text-wrap" href="{{route('pagesSingle', $page->slug)}}"> {{$page['title_'.session('lang')]}}</a>
                       </li>
                       @endforeach
                     </ul>
@@ -271,9 +313,6 @@
                   </li>
                   @endif
                   @endforeach
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{{route('contact')}}">{{__('word.contact')}} </a>
-                  </li>
                 </ul>
               </div>
               <!-- navbar-collapse.// -->

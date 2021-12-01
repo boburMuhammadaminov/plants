@@ -36,7 +36,7 @@
                                                 echo "selected";
                                             }
                                         @endphp
-                                        value="{{$category->id}}">{{$category->name_ru}}</option>
+                                        value="{{$category->id}}">{{$category->name_uz}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -29,49 +29,62 @@
               </a>
             </li>
             <li class="list-group-item">
-              <a class="nav-link myHover" href="{{route('staff')}}">
+              <a class="nav-link myHover" href="{{route('staff', 'hi')}}">
                 {{__('word.ourStaff')}} 
               </a>
             </li>
-            <li class="list-group-item">
-              <a class="nav-link myHover" href="{{route('gallery')}}">
-                {{__('word.gallery')}} 
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="nav-link myHover" href="{{route('contact')}}">
-                {{__('word.contact')}} 
-              </a>
-            </li>
-            @if (count($newsCategories)>0)
-              <li class="list-group-item">
-                <a class="nav-link myHover">
-                  {{__('word.news')}} 
-                </a>
-              </li>
-              @foreach ($newsCategories as $news)
-                <li class="list-group-item" style="padding-left: 40px;">
-                  <a class="nav-link myHover" href="{{route('news', $news->slug)}}">
-                    {{$news['name_'.session('lang')]}}
-                  </a>
-                </li>
-              @endforeach
-            @endif
+            
+            
             @if (count($pagesCategories)>0)
               @foreach ($pagesCategories as $item)
-                @if (count($item->pages) > 0)
-                  <li class="list-group-item">
-                    <a class="nav-link myHover">
-                      {{$item['name_'.session('lang')]}} 
+                <li class="list-group-item">
+                  <a class="nav-link myHover">
+                    {{$item['name_'.session('lang')]}} 
+                  </a>
+                </li>
+                @if ($item->slug == 'agency')
+                  @foreach ($allStaff as $staff)
+                    @if (count($staff->staff)>0)
+                      <li class="list-group-item" style="padding-left: 40px;">
+                        <a class="nav-link myHover" href="{{route('staff', $staff->slug)}}">
+                          {{($staff['name_'.session('lang')])}} 
+                        </a>
+                      </li>
+                    @endif
+                  @endforeach
+                @endif
+                @foreach ($item->pages as $page)
+                  <li class="list-group-item" style="padding-left: 40px;">
+                    <a class="nav-link myHover" href="{{route('pagesSingle', $page->slug)}}">
+                      {{$page['title_'.session('lang')]}}
                     </a>
                   </li>
-                  @foreach ($item->pages as $page)
+                @endforeach
+                @if ($item->slug == 'information-service')
+                  @foreach ($newsCategories as $news)
                     <li class="list-group-item" style="padding-left: 40px;">
-                      <a class="nav-link myHover" href="{{route('pagesSingle', $page->slug)}}">
-                        {{$page['title_'.session('lang')]}}
+                      <a class="nav-link myHover" href="{{route('news', $news->slug)}}">
+                        {{$news['name_'.session('lang')]}}
                       </a>
                     </li>
                   @endforeach
+                  <li class="list-group-item" style="padding-left: 40px;">
+                    <a class="nav-link myHover" href="{{route('videos')}}">
+                      {{__('word.video')}} 
+                    </a>
+                  </li>
+                  <li class="list-group-item" style="padding-left: 40px;">
+                    <a class="nav-link myHover" href="{{route('gallery')}}">
+                      {{__('word.gallery')}} 
+                    </a>
+                  </li>
+                @endif
+                @if ($item->slug == 'agency')
+                  <li class="list-group-item" style="padding-left: 40px;">
+                    <a class="nav-link myHover" href="{{route('contact')}}">
+                      {{__('word.contact')}} 
+                    </a>
+                  </li>
                 @endif
               @endforeach
             @endif

@@ -24,4 +24,8 @@ class Staff extends Model
     {
         return '<img class="img-thumbnail m-1" src="' . asset($this->image) . '" style="' . $style . '">';
     }
+
+    public function category(){
+        return $this->belongsTo(StaffCategory::class, 'staffCategory_id');
+    }
 }

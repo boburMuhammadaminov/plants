@@ -47,7 +47,7 @@
                         @foreach($blogs as $blog)
                             <tr>
                                 <td>{{ $loop->index+1 }}</td>
-                                <td>{{ $blog->title_uz }}</td>
+                                <td>{{ Str::limit($blog->title_uz, 60) }}</td>
                                 <td>
                                     {!! $blog->getBlogImage() !!}
                                 </td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staff;
+use App\Models\StaffCategory;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -25,7 +26,8 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('admin.staff.create');
+        $categories = StaffCategory::all();
+        return view('admin.staff.create', compact('categories'));
     }
 
     /**
@@ -54,6 +56,7 @@ class StaffController extends Controller
             'charges_uz' => 'required',
             'charges_en' => 'required',
             'charges_ru' => 'required',
+            'staffCategory_id' => 'required',
         ]);
 
         if(!file_exists('uploads/staff/')){
@@ -86,7 +89,8 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        return view('admin.staff.edit', compact('staff'));
+        $categories = StaffCategory::all();
+        return view('admin.staff.edit', compact('staff', 'categories'));
     }
 
     /**
@@ -116,6 +120,7 @@ class StaffController extends Controller
             'charges_uz' => 'required',
             'charges_en' => 'required',
             'charges_ru' => 'required',
+            'staffCategory_id' => 'required',
         ]);
 
         if ($request->hasFile('image')) {

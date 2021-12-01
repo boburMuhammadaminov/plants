@@ -154,6 +154,11 @@
                 a {
                   text-align: center;
                 }
+                &.dropdown {
+                  .dropdown-menu {
+                    width: 100%;
+                  }
+                }
               }
             }
           }
@@ -247,6 +252,9 @@
                 }
               }
             }
+          }
+          .video_grid {
+            grid-template-columns: repeat(1, 1fr);
           }
         }
         .col-md-3 {

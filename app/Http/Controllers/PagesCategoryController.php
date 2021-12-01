@@ -15,7 +15,7 @@ class PagesCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $pagesCategories = PagesCategory::paginate(10);
         return view('admin.pagesCategories.index', compact('pagesCategories'));
     }

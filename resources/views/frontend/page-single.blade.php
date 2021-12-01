@@ -28,21 +28,49 @@
       <div class="col-md-3">
         <div class="links">
           <ul>
-            @if (count($pages) > 0)
+            @if (count($pages) > 0 || count($allStaff) > 0)
+              @foreach ($allStaff as $staff)
+                @if (count($staff->staff)>0)
+                  <li>
+                    <a href="{{route('staff', $staff->slug)}}" class="
+                      @if (Str::substr(Request::getRequestUri(), 0, 6) == '/staff')
+                        @if ($staffs->id === $staff->id)
+                          active  
+                        @endif 
+                      @endif
+                      ">
+                      {{$staff['name_'.session('lang')]}}
+                    </a>
+                  </li>
+                @endif
+              @endforeach
               @foreach ($pages as $news)
               <li>
                 <a href="{{route('pagesSingle', $news->slug)}}" class="
-                  @if ($page->id === $news->id)
-                    active  
-                  @endif 
+                  @if (Str::substr(Request::getRequestUri(), 0, 6) !== '/staff')
+                    @if ($page->id === $news->id)
+                      active  
+                    @endif 
+                  @endif
                   ">
                   {{$news['title_'.session('lang')]}}
                 </a>
               </li>
               @endforeach
+              @if ($page->category->slug == 'agency')
+                <li>
+                  <a href="{{route('contact')}}" class="
+                    @if (Str::substr(Request::getRequestUri(), 0, 8) == '/contact')
+                      active  
+                    @endif
+                    ">
+                    {{__('word.contact')}} 
+                  </a>
+                </li>
+              @endif
             @else
               <li>
-                <a href="Javascript:void(0);" class="h5">Foydali halovalar</a>
+                <a href="Javascript:void(0);" class="h5">{{__('word.usefullLinks')}}</a>
               </li>
               @foreach ($links as $link)
               <li>

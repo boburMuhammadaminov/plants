@@ -12,6 +12,7 @@ use App\Models\PagesCategory;
 use App\Models\PagesSetting;
 use App\Models\Slider;
 use App\Models\Staff;
+use App\Models\Vidoe;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -79,7 +80,8 @@ class PagesController extends Controller
                 'blogs' => function($query){ $query->with('category')->where('is_active', '=', 1)->limit(4); }
             )
         )->get();
-        $galleries = Gallery::where('is_active', '=', 1)->orderByDesc('created_at')->limit(2)->get();
+        $gallery = Gallery::where('is_active', '=', 1)->orderByDesc('created_at')->first();
+        $video = Vidoe::where('is_active', '=', 1)->orderByDesc('created_at')->first();
         $sliders = Slider::where('is_active', '=', 1)->get();
         $blogs = Blog::with('category')->where('is_active', '=', 1)->limit(4)->get();
         $links = \App\Models\Link::where('is_active', '=', 1)->get();
@@ -97,7 +99,7 @@ class PagesController extends Controller
         JsonLd::setTitle(__('word.home') . ' - ' .$setting["name_".session("lang")] );
         JsonLd::setDescription($setting['description_'.session('lang')]);
         JsonLd::addImage($image);
-        return view('frontend.index', compact('categories', 'sliders', 'links', 'blogs', 'galleries', 'imageLinks'));
+        return view('frontend.index', compact('categories', 'sliders', 'links', 'blogs', 'gallery', 'video', 'imageLinks'));
     }
     public function news($slug)
     {
@@ -148,6 +150,7 @@ class PagesController extends Controller
         $setting = \App\Models\Setting::first();
         $logo = \App\Models\SiteImage::first();
         $image = asset($logo->image);
+        $categories = Category::all();
         $galleries = Gallery::where('is_active', '=', 1)->paginate(6);
         $links = Link::where('is_active', '=', 1)->get();
         SEOMeta::setTitle(__('word.gallery') . ' - ' .$setting["name_".session("lang")] );
@@ -163,7 +166,7 @@ class PagesController extends Controller
         JsonLd::setTitle(__('word.gallery') . ' - ' .$setting["name_".session("lang")] );
         JsonLd::setDescription($setting['description_'.session('lang')]);
         JsonLd::addImage($image);
-        return view('frontend.gallery', compact('galleries', 'links'));
+        return view('frontend.gallery', compact('galleries', 'links', 'categories'));
     }
     public function gallerySingle($slug)
     {
@@ -191,6 +194,11 @@ class PagesController extends Controller
         $logo = \App\Models\SiteImage::first();
         $page = PagesSetting::with('category')->where('slug', '=', $slug)->where('is_active', '=', 1)->firstOrFail();
         // dd($page);
+        $allStaff = \App\Models\StaffCategory::with(
+            array(
+              'staff' => function($query){ $query->where('is_active', '=', 1); }
+            )
+        )->get();
         $pages = PagesSetting::where('pagesCategory_id', '=', $page['category']['id'])->where('is_active', '=', 1)->get();
         $links = Link::where('is_active', '=', 1)->get();
         $image = asset($logo->image);
@@ -207,7 +215,7 @@ class PagesController extends Controller
         JsonLd::setTitle($page["title_".session("lang")].' - ' . $page->category['name_'.session('lang')]);
         JsonLd::setDescription(Str::limit(strip_tags($page['content'.session('lang')]), 150));
         JsonLd::addImage($image);
-        return view('frontend.page-single', compact('pages', 'page', 'links'));
+        return view('frontend.page-single', compact('pages', 'page', 'links', 'allStaff'));
     }
     public function contact()
     {
@@ -229,7 +237,7 @@ class PagesController extends Controller
         JsonLd::addImage($image);
         return view('frontend.contact');
     }
-    public function staff()
+    public function staff($staff)
     {
         $setting = \App\Models\Setting::first();
         $logo = \App\Models\SiteImage::first();
@@ -247,9 +255,24 @@ class PagesController extends Controller
         JsonLd::setTitle(__('word.ourStaff') . ' - ' .$setting["name_".session("lang")] );
         JsonLd::setDescription($setting['description_'.session('lang')]);
         JsonLd::addImage($image);
-        $staffs = Staff::where('is_active', '=', 1)->get();
+        $pages = \App\Models\PagesCategory::with(
+            array(
+              'pages' => function($query){ $query->where('is_active', '=', 1); }
+            )
+        )->where('slug', '=', 'agency')->first();
         $links = Link::where('is_active', '=', 1)->get();
-        return view('frontend.management', compact('staffs', 'links'));
+        $staffs = \App\Models\StaffCategory::with(
+            array(
+              'staff' => function($query){ $query->where('is_active', '=', 1); }
+            )
+        )->where('slug', '=', $staff)->firstOrFail();
+        $allStaff = \App\Models\StaffCategory::with(
+            array(
+              'staff' => function($query){ $query->where('is_active', '=', 1); }
+            )
+        )->get();
+        // dd($pages);
+        return view('frontend.management', compact('staffs', 'allStaff', 'links', 'pages'));
     }
     public function sitemap()
     {
@@ -279,7 +302,35 @@ class PagesController extends Controller
             'pages' => function($query){ $query->where('is_active', '=', 1); }
         )
         )->get();
+        $allStaff = \App\Models\StaffCategory::with(
+            array(
+              'staff' => function($query){ $query->where('is_active', '=', 1); }
+            )
+        )->get();
         $links = Link::where('is_active', '=', 1)->get();
-        return view('frontend.sitemap', compact('links', 'newsCategories', 'pagesCategories'));
+        return view('frontend.sitemap', compact('links', 'newsCategories', 'pagesCategories', 'allStaff'));
+    }
+    public function videos()
+    {
+        $setting = \App\Models\Setting::first();
+        $logo = \App\Models\SiteImage::first();
+        $image = asset($logo->image);
+        $videos = Vidoe::where('is_active', '=', 1)->paginate(6);
+        $links = Link::where('is_active', '=', 1)->get();
+        $categories = Category::all();
+        SEOMeta::setTitle(__('word.video') . ' - ' .$setting["name_".session("lang")] );
+        SEOMeta::setDescription($setting['description_'.session('lang')]);
+        SEOMeta::setCanonical(Config::get('app.url') . '/videos');
+
+        OpenGraph::setTitle(__('word.video') . ' - ' .$setting["name_".session("lang")] );
+        OpenGraph::setDescription($setting['description_'.session('lang')]);
+        OpenGraph::setUrl(Config::get('app.url') . '/videos');
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addImage($image);
+        
+        JsonLd::setTitle(__('word.video') . ' - ' .$setting["name_".session("lang")] );
+        JsonLd::setDescription($setting['description_'.session('lang')]);
+        JsonLd::addImage($image);
+        return view('frontend.video', compact('videos', 'links', 'categories'));
     }
 }

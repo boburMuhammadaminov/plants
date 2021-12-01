@@ -28,6 +28,22 @@
 
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="">Kategoriya</label>
+                                <select name="staffCategory_id" class="form-select mb-3">
+                                    <option disabled selected>Ushbu tanlash menyusini oching</option>
+                                    @if(count($categories) > 0)
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name_uz}}</option>
+                                        @endforeach
+                                    @else
+                                        <option disabled selected>Kategoriyalar mavjud emas, avval kategoriya yarating</option>
+                                    @endif
+                                </select>
+                                @error ('staffCategory_id')
+                                <p class="text-danger">* {{$message}}</p>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="name_uz">F.I.O UZ</label>
                                 <input type="text" required class="form-control" name="name_uz"
                                        placeholder="F.I.O (uz)ni kiriting" value="{{old('name_uz')}}">

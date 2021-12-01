@@ -31,6 +31,7 @@ return [
     'staffReception' => 'Days of reception', 
     'usefullLinks' => 'Usefull links', 
     'ourStaff' => 'Our staff', 
+    'video' => 'Video', 
 
 
 

@@ -16,7 +16,7 @@ class PagesSettingController extends Controller
      */
     public function index()
     {
-        $pages = PagesSetting::all();
+        $pages = PagesSetting::paginate(105);
         return view('admin.pages.index', compact('pages'));
     }
     

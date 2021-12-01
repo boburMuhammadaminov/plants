@@ -37,15 +37,55 @@
       <div class="col-md-3">
         <div class="links">
           <ul>
-            @foreach ($categories as $cat)
-              <li><a href="{{route('news', $cat->slug)}}" class="
-              @if ($cat->id === $category->id)
-                active  
-              @endif  
-              ">
-                {{$cat['name_'.session('lang')]}}
-              </a></li>
-            @endforeach
+            @if (count($categories) > 0 || Str::substr(Request::getRequestUri(), 0, 7) == '/videos' || Str::substr(Request::getRequestUri(), 0, 8) == '/gallery')
+              @foreach ($categories as $news)
+                @if (count($news->blogs)>0)
+                  <li>
+                    <a href="{{route('news', $news->slug)}}" class="
+                      @if (Str::substr(Request::getRequestUri(), 0, 5) == '/news')
+                        @if ($news->id === $category->id)
+                          active  
+                        @endif
+                      @endif
+                      ">
+                      {{$news['name_'.session('lang')]}}
+                    </a>
+                  </li>
+                @endif
+              @endforeach
+              @if (Str::substr(Request::getRequestUri(), 0, 5) == '/news')
+              <li>
+                <a href="{{route('videos')}}" class="
+                  @if (Str::substr(Request::getRequestUri(), 0, 7) == '/videos')
+                    active  
+                  @endif
+                  ">
+                  {{__('word.video')}}
+                </a>
+              </li>
+              <li>
+                <a href="{{route('gallery')}}" class="
+                  @if (Str::substr(Request::getRequestUri(), 0, 8) == '/gallery')
+                    active  
+                  @endif
+                  ">
+                  {{__('word.gallery')}}
+                </a>
+              </li>
+                  
+              @endif
+            @else
+              <li>
+                <a href="Javascript:void(0);" class="h5">{{__('word.usefullLinks')}}</a>
+              </li>
+              @foreach ($links as $link)
+              <li>
+                <a href="{{$link->link}}">
+                  {{$link['title_'.session('lang')]}}
+                </a>
+              </li>
+              @endforeach
+            @endif
           </ul>
         </div>
       </div>

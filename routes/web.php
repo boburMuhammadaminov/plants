@@ -15,7 +15,10 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SiteImageController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialSettingsController;
+use App\Http\Controllers\StaffCategoryController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\VidoeController;
+use App\Models\StaffCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,8 +42,9 @@ Route::get('/pages/{slug}', [PagesController::class, 'pages'])->name('pages');
 Route::get('/pages-single/{slug}', [PagesController::class, 'pagesSingle'])->name('pagesSingle');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'contactAdmin'])->name('contactAdmin');
-Route::get('/staff', [PagesController::class, 'staff'])->name('staff');
 Route::get('/sitemap', [PagesController::class, 'sitemap'])->name('sitemap');
+Route::get('/videos', [PagesController::class, 'videos'])->name('videos');
+Route::get('/staff/{staff}', [PagesController::class, 'staff'])->name('staff');
 
 Auth::routes(['register' => false]);
 
@@ -65,6 +69,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         'page'=>PagesSettingController::class,
         'siteImages' => SiteImageController::class,
         'staff' => StaffController::class,
+        'videos' => VidoeController::class,
+        'catStaff' => StaffCategoryController::class,
     ]);
 
     // Active and inactive

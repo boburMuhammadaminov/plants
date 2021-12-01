@@ -31,6 +31,8 @@ return [
     'staffReception' => 'Дни приема',  
     'usefullLinks' => 'Полезные ссылки', 
     'ourStaff' => 'Наша команда', 
+    'video' => 'Видео', 
+
 
 
 

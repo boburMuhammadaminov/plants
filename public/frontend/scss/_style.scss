@@ -225,6 +225,7 @@ header {
               &.dropdown {
                 .dropdown-menu {
                   background-color: $lightPrimary;
+                  width: 300px;
                   li {
                     background-color: $lightPrimary;
                     a {
@@ -725,6 +726,27 @@ footer {
             background-color: #fff;
             color: #119769;
             text-align: center;
+          }
+        }
+      }
+    }
+    .video_grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-column-gap: 30px;
+      grid-row-gap: 30px;
+      .video-item {
+        .top {
+          position: relative;
+          .play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
           }
         }
       }

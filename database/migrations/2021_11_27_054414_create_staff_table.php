@@ -34,6 +34,7 @@ class CreateStaffTable extends Migration
             $table->longText('charges_en');
             $table->longText('charges_ru');
             $table->boolean('is_active')->default(false);
+            $table->foreignId('staffCategory_id')->references('id')->on('staff_categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

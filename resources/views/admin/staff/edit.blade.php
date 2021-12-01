@@ -22,6 +22,27 @@
                     @csrf
                     @method('PUT')
                     <div class="card-body">
+                        <div class="form-group">
+                            <label for="name_ru">Kategoriya</label>
+                            <select name="staffCategory_id" class="form-select">
+                                <option
+                                    disabled>
+                                    Open this select menu
+                                </option>
+                                @foreach ($categories as $category)
+                                    <option
+                                        @php
+                                            if($category->id == $staff->staffCategory_id){
+                                                echo "selected";
+                                            }
+                                        @endphp
+                                        value="{{$category->id}}">{{$category->name_uz}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error ('staffCategory_id')
+                        <p class="text-danger">* {{$message}}</p>
+                        @enderror
                         <div class="form-group mb-3">
                             <label for="name_uz">Ism UZ</label>
                             <input type="text" required class="form-control" name="name_uz" value="{{$staff->name_uz}}"

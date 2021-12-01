@@ -31,5 +31,7 @@ return [
     'staffReception' => 'Qabul kunlari', 
     'usefullLinks' => 'Foydali halovalar', 
     'ourStaff' => 'Jamoamiz', 
+    'video' => 'Video', 
+
 
 ];

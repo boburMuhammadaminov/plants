@@ -31,7 +31,7 @@
           <ul>
             @if (count($blogs) > 0)
               <li>
-                <a href="Javascript:void(0);" class="h5">Aloqador yangiliklar</a>
+                <a href="Javascript:void(0);" class="h5">{{__('word.relatedNews')}}</a>
               </li>
               @foreach ($blogs as $news)
               <li>
@@ -45,7 +45,7 @@
               </li>
             @else
               <li>
-                <a href="Javascript:void(0);" class="h5">Foydali halovalar</a>
+                <a href="Javascript:void(0);" class="h5">{{__('word.usefullLinks')}}</a>
               </li>
               @foreach ($links as $link)
               <li>
