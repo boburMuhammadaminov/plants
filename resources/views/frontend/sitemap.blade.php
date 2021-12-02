@@ -28,13 +28,6 @@
                 {{__('word.home')}} 
               </a>
             </li>
-            <li class="list-group-item">
-              <a class="nav-link myHover" href="{{route('staff', 'hi')}}">
-                {{__('word.ourStaff')}} 
-              </a>
-            </li>
-            
-            
             @if (count($pagesCategories)>0)
               @foreach ($pagesCategories as $item)
                 <li class="list-group-item">
@@ -42,7 +35,7 @@
                     {{$item['name_'.session('lang')]}} 
                   </a>
                 </li>
-                @if ($item->slug == 'agency')
+                @if ($item->slug == 'institute')
                   @foreach ($allStaff as $staff)
                     @if (count($staff->staff)>0)
                       <li class="list-group-item" style="padding-left: 40px;">
@@ -79,7 +72,7 @@
                     </a>
                   </li>
                 @endif
-                @if ($item->slug == 'agency')
+                @if ($item->slug == 'institute')
                   <li class="list-group-item" style="padding-left: 40px;">
                     <a class="nav-link myHover" href="{{route('contact')}}">
                       {{__('word.contact')}} 
