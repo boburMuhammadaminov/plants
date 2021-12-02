@@ -44,10 +44,11 @@
 @if (Session::has('send'))
   <script>
     Swal.fire(
-      'Good job!',
-      'Successfully sent!',
+      `{{__('word.goodJob')}}`,
+      `{{__('word.successfullySend')}}`,
       'success'
     )
+
   </script>
 @endif
 @endsection

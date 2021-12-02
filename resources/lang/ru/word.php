@@ -32,6 +32,8 @@ return [
     'usefullLinks' => 'Полезные ссылки', 
     'ourStaff' => 'Наша команда', 
     'video' => 'Видео', 
+    'successfullySend' => 'Успешно отправлено!', 
+    'goodJob' => 'Молодец!', 
 
 
 

@@ -32,6 +32,9 @@ return [
     'usefullLinks' => 'Foydali halovalar', 
     'ourStaff' => 'Jamoamiz', 
     'video' => 'Video', 
+    'successfullySend' => 'Muvafaqiyatli jo\'natildi!', 
+    'goodJob' => 'Qoyilmaqom!', 
+
 
 
 ];

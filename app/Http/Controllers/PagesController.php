@@ -61,7 +61,7 @@ class PagesController extends Controller
         }
 
         Contact::create($data);
-        return back()->with('send', 'Successfully send!');
+        return back()->with('send', 'successfullySend!');
 
     }
     //Language

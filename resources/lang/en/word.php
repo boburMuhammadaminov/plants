@@ -32,6 +32,10 @@ return [
     'usefullLinks' => 'Usefull links', 
     'ourStaff' => 'Our staff', 
     'video' => 'Video', 
+    'successfullySend' => 'Successfully send!', 
+    'goodJob' => 'Good job!', 
+
+    
 
 
 
