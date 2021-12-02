@@ -259,7 +259,7 @@ class PagesController extends Controller
             array(
               'pages' => function($query){ $query->where('is_active', '=', 1); }
             )
-        )->where('slug', '=', 'agency')->first();
+        )->where('slug', '=', 'institute')->first();
         $links = Link::where('is_active', '=', 1)->get();
         $staffs = \App\Models\StaffCategory::with(
             array(
