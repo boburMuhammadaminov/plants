@@ -265,7 +265,7 @@
                     </ul>
                     @endif
                   </li>
-                  @elseif($item->slug == "agency")
+                  @elseif($item->slug == "institute")
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
