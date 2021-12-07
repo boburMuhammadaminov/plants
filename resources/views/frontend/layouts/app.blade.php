@@ -341,15 +341,14 @@
           </div>
         </div>
         <div class="content">
-          <p>Saytning yangilangan sanasi: 19.11.2021, 17:46</p>
+          {{-- <p>Saytning yangilangan sanasi: 19.11.2021, 17:46</p> --}}
           <p>
-            Sayt ma'lumotlaridan foydalanilganda <a href="https://karantinhimoya.uz">www.karantinhimoya.uz</a> manbasi
-            ko'rsatilishi shart
+            {{__('word.footer1')}}
           </p>
           <p>
-            Saytdagi barcha materiallardan quyidagi lisenziya bo‘yicha
-            foydalanish mumkin: <br />
-            <a href="#">Creative Commons Attribution 4.0 International</a>
+            {{__('word.footer2')}}
+            <br />
+            <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>
           </p>
         </div>
       </div>

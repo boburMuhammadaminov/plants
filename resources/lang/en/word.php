@@ -34,6 +34,8 @@ return [
     'video' => 'Video', 
     'successfullySend' => 'Successfully send!', 
     'goodJob' => 'Good job!', 
+    'footer1' => 'When using site materials reference to www.karantinhimoya.uz required.', 
+    'footer2' => 'All materials on the site are available under the following licenses: ', 
 
     
 

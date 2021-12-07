@@ -34,6 +34,9 @@ return [
     'video' => 'Video', 
     'successfullySend' => 'Muvafaqiyatli jo\'natildi!', 
     'goodJob' => 'Qoyilmaqom!', 
+    'footer1' => 'Sayt ma\'lumotlaridan foydalanilganda www.karantinhimoya.uz manbasi
+    ko\'rsatilishi shart', 
+    'footer2' => 'Saytdagi barcha materiallardan quyidagi lisenziya bo‘yicha foydalanish mumkin:', 
 
 
 

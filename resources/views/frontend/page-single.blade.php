@@ -29,21 +29,23 @@
         <div class="links">
           <ul>
             @if (count($pages) > 0 || count($allStaff) > 0)
-              @foreach ($allStaff as $staff)
-                @if (count($staff->staff)>0)
-                  <li>
-                    <a href="{{route('staff', $staff->slug)}}" class="
-                      @if (Str::substr(Request::getRequestUri(), 0, 6) == '/staff')
-                        @if ($staffs->id === $staff->id)
-                          active  
-                        @endif 
-                      @endif
-                      ">
-                      {{$staff['name_'.session('lang')]}}
-                    </a>
-                  </li>
-                @endif
-              @endforeach
+              @if (Str::substr(Request::getRequestUri(), 0, 6) == '/staff')
+                @foreach ($allStaff as $staff)
+                  @if (count($staff->staff)>0)
+                    <li>
+                      <a href="{{route('staff', $staff->slug)}}" class="
+                        @if (Str::substr(Request::getRequestUri(), 0, 6) == '/staff')
+                          @if ($staffs->id === $staff->id)
+                            active  
+                          @endif 
+                        @endif
+                        ">
+                        {{$staff['name_'.session('lang')]}}
+                      </a>
+                    </li>
+                  @endif
+                @endforeach
+              @endif
               @foreach ($pages as $news)
               <li>
                 <a href="{{route('pagesSingle', $news->slug)}}" class="
